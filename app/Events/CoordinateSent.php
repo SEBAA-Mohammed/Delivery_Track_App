@@ -19,8 +19,8 @@ class CoordinateSent implements ShouldBroadcastNow
      * Create a new event instance.
      */
     public function __construct(
-        public float $latitude,
-        public float $longitude
+        public float $lat,
+        public float $lng
     ) {
         //
     }
