@@ -2,8 +2,10 @@
 
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\ProfileController;
+use App\Events\CoordinateSent;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -23,9 +25,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/courier', function () {
-        return inertia('Courier');
-    })->name('courier');
+    Route::post('/courier', function (Request $request) {
+        $coordinates = $request->all();
+
+        CoordinateSent::dispatch($coordinates['lat'], $coordinates['lng']);
+    })->name('courier.coords');
 
     Route::get('/admin', function () {
         return inertia('Admin');
