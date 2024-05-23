@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('commandes', function (Blueprint $table) {
             $table->id();
+            $table->double('ttc');
+            $table->datetime('date_commande');
+            $table->datetime('date_livraison');
+            $table->string('volume');
+            $table->foreignId('pharmacie_id')->constrained('pharmacies')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('voyage_id')->constrained('voyages')->onDelete('cascade');
+            $table->foreignId('statut_id')->constrained('statuts')->onDelete('cascade');
             $table->timestamps();
         });
     }
