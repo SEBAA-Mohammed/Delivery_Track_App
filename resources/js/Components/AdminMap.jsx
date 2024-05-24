@@ -52,8 +52,8 @@ export function AdminMap({ pharmacies }) {
           icon={L.icon({ iconUrl: pharmacyIcon, iconSize: [70, 70] })}
         >
           <Popup>
-            Pharmacy Name: {pharmacy.nom}
-            Pharmacy Location: {pharmacy.latitude}, {pharmacy.longitude}
+            Name: {pharmacy.nom} <br />
+            Location: {pharmacy.latitude}, {pharmacy.longitude}
           </Popup>
         </Marker>
       ))}

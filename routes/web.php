@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/courier', function () {
-        return inertia('Courier');
+        return inertia('Courier', ['pharmacies' => Pharmacie::all()]);
     })->name('courier');
 
     Route::post('/courier', function (Request $request) {
