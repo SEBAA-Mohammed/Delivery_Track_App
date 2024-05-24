@@ -4,6 +4,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
+use App\Models\Pharmacie;
 use App\Http\Controllers\ProfileController;
 use App\Events\CoordinateSent;
 
@@ -36,7 +37,7 @@ Route::middleware('auth')->group(function () {
     })->name('courier.coords');
 
     Route::get('/admin', function () {
-        return inertia('Admin');
+        return inertia('Admin', ['pharmacies' => Pharmacie::all()]);
     })->name('admin');
 });
 

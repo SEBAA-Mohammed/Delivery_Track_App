@@ -2,15 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import { MapContainer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 
+import { echo } from "@/echo";
 import { MapDisplay } from "./MapDisplay";
 import courierIcon from "../../../public/courier.png";
+import pharmacyIcon from "../../../public/pharmacy.png";
 
 import "leaflet/dist/leaflet.css";
 import "leaflet-routing-machine";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
-import { echo } from "@/echo";
 
-export function AdminMap() {
+export function AdminMap({ pharmacies }) {
   const mapRef = useRef(null);
   const CENTER = [34.00501829905671, -4.957129955291749];
   const [courierCoords, setCourierCoords] = useState({
@@ -44,6 +45,18 @@ export function AdminMap() {
           </Popup>
         </Marker>
       )}
+      {pharmacies.map((pharmacy) => (
+        <Marker
+          key={pharmacy.id}
+          position={[pharmacy.latitude, pharmacy.longitude]}
+          icon={L.icon({ iconUrl: pharmacyIcon, iconSize: [70, 70] })}
+        >
+          <Popup>
+            Pharmacy Name: {pharmacy.nom}
+            Pharmacy Location: {pharmacy.latitude}, {pharmacy.longitude}
+          </Popup>
+        </Marker>
+      ))}
     </MapContainer>
   );
 }
