@@ -31,9 +31,6 @@ class CommandeController extends Controller
      */
     public function store(Request $request)
     {
-        $order = Commande::create($request->all());
-        $deliveryPerson = User::find($order->delivery_person_id);
-        $deliveryPerson->notify(new OrderAssigned($order));
     }
 
     /**

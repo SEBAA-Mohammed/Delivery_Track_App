@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Voyage;
+use App\Notifications\OrderAssigned;
 use Illuminate\Http\Request;
 
 class VoyageController extends Controller
@@ -28,7 +30,9 @@ class VoyageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = Voyage::create($request->all());
+        $deliveryPerson = User::find($order->delivery_person_id);
+        $deliveryPerson->notify(new OrderAssigned($order));
     }
 
     /**
