@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('adresse');
             $table->string('tel');
             $table->string('email');
-            $table->string('latitude');
-            $table->string('longitude');
-            $table->foreignId('secteur_id')->constrained('secteurs')->onDelete('cascade');;
+            $table->float('latitude');
+            $table->float('longitude');
+            $table->foreignId('secteur_id')->constrained('secteurs')->onDelete('cascade');
             $table->timestamps();
         });
     }
