@@ -49,7 +49,7 @@ export function AdminMap({ pharmacies }) {
         <Marker
           key={pharmacy.id}
           position={[pharmacy.latitude, pharmacy.longitude]}
-          icon={L.icon({ iconUrl: pharmacyIcon, iconSize: [70, 70] })}
+          icon={L.icon({ iconUrl: pharmacyIcon, iconSize: [50, 50] })}
         >
           <Popup>
             Name: {pharmacy.nom} <br />
