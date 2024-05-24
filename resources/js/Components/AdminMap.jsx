@@ -5,7 +5,7 @@ import L from "leaflet";
 import { echo } from "@/echo";
 import { MapDisplay } from "./MapDisplay";
 import courierIcon from "../../../public/courier.png";
-import pharmacyIcon from "../../../public/pharmacy.png";
+import pharmacyIcon from "../../../public/pharmacyIcon.png";
 
 import "leaflet/dist/leaflet.css";
 import "leaflet-routing-machine";
