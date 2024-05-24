@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use phpDocumentor\Reflection\Types\Nullable;
 
 return new class extends Migration
 {
@@ -14,10 +15,9 @@ return new class extends Migration
         Schema::create('pharmacies', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->string('prenom');
-            $table->string('adresse');
-            $table->string('tel');
-            $table->string('email');
+            $table->string('adresse')->nullable();
+            $table->string('tel')->nullable();
+            $table->string('email')->nullable();
             $table->float('latitude');
             $table->float('longitude');
             $table->foreignId('secteur_id')->constrained('secteurs')->onDelete('cascade');
