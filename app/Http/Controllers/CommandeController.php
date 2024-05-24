@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Commande;
+use App\Models\User;
+use App\Notifications\OrderAssigned;
+use Illuminate\Console\Command;
 use Illuminate\Http\Request;
 
 class CommandeController extends Controller
@@ -28,7 +31,9 @@ class CommandeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = Commande::create($request->all());
+        $deliveryPerson = User::find($order->delivery_person_id);
+        $deliveryPerson->notify(new OrderAssigned($order));
     }
 
     /**
