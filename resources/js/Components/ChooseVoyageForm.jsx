@@ -11,8 +11,6 @@ export function ChooseVoyageForm({
     e.preventDefault();
   }
 
-  console.log("voyage: ", voyage);
-
   return (
     <form onSubmit={submitHandler}>
       <div className="flex">
